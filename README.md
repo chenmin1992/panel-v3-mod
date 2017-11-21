@@ -15,25 +15,7 @@ lnmp vhost add
 
 ```
 
-2. 移除防跨目录移除工具
-
-该工具可以快速的移除防跨目录的限制
-
-```
-cd lnmp1.4/tools && ./remove_open_basedir_restriction.sh
-```
-
-按提示输入虚拟主机目录
-`/home/wwwroot/你的域名`
-回车确认即可。
-
-3. 开启scandir()函数
-
-```
-sed -i 's/,scandir//g' /usr/local/php/etc/php.ini
-```
-
-4. 修改conf
+2. 修改conf
 
 ```
 vim /usr/local/nginx/conf/vhost/你的域名.conf
@@ -84,15 +66,16 @@ server
 
         location ~ .*\.(js|css)?$
         {
-            expires      12h;
+			expires      12h;
         }
-location ~ /\.
-        {
-            deny all;
-        }
-location / {
-                        try_files $uri $uri/ /index.php$is_args$args;
-                }
+		location ~ /\.
+		{
+			deny all;
+		}
+location / 
+		{
+			try_files $uri $uri/ /index.php$is_args$args;
+		}
  access_log  /home/wwwlogs/你的域名.log;
 ```
 
@@ -124,6 +107,7 @@ mysql>source /home/wwwroot/你的域名/sql/glzjin_all.sql  // 导入.sql文件
 
 ```
 cd /home/wwwroot/你的域名
+cp config/.config.php.example config/.config.php
 vi config/.config.php
 lnmp restart
 ```
