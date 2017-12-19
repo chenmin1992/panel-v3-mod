@@ -145,7 +145,7 @@ https://openhome.alipay.com/platform/keyManage.htm?keyType=partner
 ```
 php xcat createAdmin          //创建管理员
 php xcat syncusers            //同步用户
-php -n xcat initdownload      //下载客户端
+~~php -n xcat initdownload      //下载客户端~~
 php xcat initQQWry            //下载IP解析库
 php xcat resetTraffic         //重置流量
 ```
